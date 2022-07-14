@@ -2,8 +2,7 @@ import mongoose from 'mongoose'
 
 const drinkSchema = new mongoose.Schema({
   name: String,
-  songs: [{ref:'comboSchema.name'}],
-  _id: ObjectID,
+  songs: [{type: mongoose.Schema.Types.ObjectId, ref:'BoozyTune.name'}],
 },{
   timestamps: true,
 })
