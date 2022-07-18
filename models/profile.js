@@ -6,7 +6,7 @@ const profileSchema = new mongoose.Schema({
   photo: String,
   favoriteSong: { type: mongoose.Schema.Types.ObjectId, ref: 'Song' },
   favoriteDrink: { type: mongoose.Schema.Types.ObjectId, ref: 'Drink' },
-  boozyTunes: { type: mongoose.Schema.Types.ObjectId, ref: 'BoozyTune' }
+  boozyTunes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BoozyTune' }]
 
 },{
   timestamps: true,

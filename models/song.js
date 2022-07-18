@@ -2,10 +2,10 @@ import mongoose from 'mongoose'
 
 const songSchema = new mongoose.Schema({
   _id: ObjectId,
-  img: string,
-  name: string,
-  artist: string,
-  genre: string,
+  img: String,
+  name: String,
+  artist: String,
+  genre: String,
 },{
   timestamps: true,
 })
