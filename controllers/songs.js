@@ -1,5 +1,6 @@
 // import { Song } from '../models/song.js'
 // import { v2 as cloudinary } from 'cloudinary'
+// import { Profile } from '../models/profile'
 import axios from 'axios'
 import 'dotenv/config.js'
 
@@ -13,6 +14,15 @@ function songSearch(req, res) {
   })
 }
 
+function addSong(req, res) {
+  // Profile.findById(req.user.profile)
+  // .then(profile => {
+  //   Song
+  // })
+  console.log('REQ.BODY', req.body)
+}
+
 export {
-  songSearch
+  songSearch,
+  addSong
 }

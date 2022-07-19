@@ -5,10 +5,11 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
-router.get('/', songsCtrl.songSearch)
 
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
+router.get('/', songsCtrl.songSearch)
+router.post('/', songsCtrl.addSong)
 
 export { router }
