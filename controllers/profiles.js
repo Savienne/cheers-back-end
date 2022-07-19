@@ -29,7 +29,30 @@ function addPhoto(req, res) {
   })
 }
 
+function updateProfile(req, res){
+  Profile.findById(req.params.id)
+  .then(profile => {
+    if (profile._id.equals(req.user._id)) {
+      Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
+      .then(updatedProfile => {
+        res.json(updatedProfile)
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
+function updatePhoto(req, res){
+  console.log("PHOTO WORKKKKKSSSSSSSSS")
+
+}
+
 export {
   index,
-  addPhoto
+  addPhoto,
+  updateProfile,
+  updatePhoto
 }
