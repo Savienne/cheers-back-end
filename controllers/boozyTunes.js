@@ -1,6 +1,6 @@
-import { boozyTune } from '../models/boozyTune.js'
+import { BoozyTune } from '../models/boozyTune.js'
 
 
 export {
-  
+
 }
