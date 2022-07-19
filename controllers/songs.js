@@ -3,11 +3,11 @@
 import axios from 'axios'
 import 'dotenv/config.js'
 
-// const BASE_URL = 'https://www.theaudiodb.com/api/v1/json/'
+const BASE_URL = 'https://www.theaudiodb.com/api/v1/json/'
 
 function songSearch(req, res) {
-  // axios.get(`${BASE_URL}${process.env.API_KEY}/track.php?h=32793500`)
-  axios.get('https://www.theaudiodb.com/api/v1/json/2/search.php?s=coldplay')
+  console.log(req.query)
+  axios.get(`${BASE_URL}${process.env.API_KEY}/searchtrack.php?s=${req.query.artist}&t=${req.query.song}`)
   .then(songs => {
     res.json({songs: songs.data})
   })
