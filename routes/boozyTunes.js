@@ -13,6 +13,7 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, boozyTunesCtrl.create)
 router.get('/', checkAuth, boozyTunesCtrl.index)
+router.delete('/:id', checkAuth, boozyTunesCtrl.delete)
 
 
 export { router }

@@ -11,13 +11,19 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const boozyTune = await BoozyTune.find({})
-    res.status(200).json(boozyTune)
+    const boozyTunes = await BoozyTune.find({})
+    res.status(200).json(boozyTunes)
   } catch (err) {
     res.status(500).json(err)
   }
 }
 
+const deleteOne = async (req, res) => {
+
+}
+
 export {
-  create
+  create,
+  index,
+  deleteOne as delete,
 }
