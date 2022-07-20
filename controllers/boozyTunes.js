@@ -19,7 +19,7 @@ const index = async (req, res) => {
 }
 
 const deleteOne = async (req, res) => {
-
+  const boozyTunes = await BoozyTune.findById(req.params)
 }
 
 export {
