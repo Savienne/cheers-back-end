@@ -45,14 +45,9 @@ function updateProfile(req, res){
   })
 }
 
-function updatePhoto(req, res){
-  console.log("PHOTO WORKKKKKSSSSSSSSS")
-
-}
 
 export {
   index,
   addPhoto,
   updateProfile,
-  updatePhoto
 }
