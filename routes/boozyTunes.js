@@ -9,7 +9,8 @@ const router = Router()
 
 
 /*----------- PROTECTED ROUTES ------------*/
-
+router.use(decodeUserFromToken)
+router.post('/', checkAuth, boozyTunesCtrl.create)
 
 
 export { router }
