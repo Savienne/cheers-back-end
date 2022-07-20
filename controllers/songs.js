@@ -1,4 +1,4 @@
-// import { Song } from '../models/song.js'
+import { Song } from '../models/song.js'
 // import { v2 as cloudinary } from 'cloudinary'
 import axios from 'axios'
 import 'dotenv/config.js'
@@ -13,6 +13,26 @@ function songSearch(req, res) {
   })
 }
 
+const index = async (req, res) => {
+  try {
+    const songs = await Song.find({})
+    res.status(200).json(songs)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
+const create = async (req, res) => {
+  try {
+    const song = await Song.create(req.body)
+    res.status(201).json(song)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
 export {
-  songSearch
+  songSearch,
+  index,
+  create
 }

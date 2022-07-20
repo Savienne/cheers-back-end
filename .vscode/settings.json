@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "peacock.remoteColor": "#42b883",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#fbed80",
@@ -21,7 +20,4 @@
     "titleBar.inactiveForeground": "#15202b99"
   },
   "peacock.color": "#f9e64f"
-=======
-  "peacock.remoteColor": "#42b883"
->>>>>>> main
 }
