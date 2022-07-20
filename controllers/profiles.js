@@ -34,13 +34,8 @@ function addPhoto(req, res) {
 //   randomProfile.find({})
 //   .then(getRandomSong => res.json(songs))
 function updateProfile(req, res){
-  console.log(req.params.id)
-  console.log(req.body)
   Profile.findById(req.params.id)
   .then(profile => {
-    console.log(profile._id, "PROFILE ID")
-    console.log(req.user._id, "req.user ID")
-    console.log(req.params.id, "req.params ID")
     if (profile._id.equals(req.user.profile)) {
       Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
       .then(updatedProfile => {
