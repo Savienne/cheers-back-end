@@ -6,7 +6,7 @@ const router = Router()
 /*----------- PUBLIC ROUTES ------------*/
 
 
-
+router.get('/:id' BoozyTunesGameCtrl.index)
 
 /*----------- PROTECTED ROUTES ------------*/
 

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import 'dotenv/config.js'
+import { Drink } from '../models/drink'
 
 
 function index(req, res) {
@@ -14,6 +15,22 @@ function index(req, res) {
     })
   }
 
+  function create(req, res) {
+    req.body.owner = req.user.profile
+    Drink.create(req.body)
+    .then(drink => {
+      Drink.findById(drink._id)
+      .populate('owner')
+      .then(populatedDrink => {
+        res.json(populatedDrink)
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({err: err.errmsg})
+    })
+  }
   export {
-    Drink
+    index,
+    create
   }

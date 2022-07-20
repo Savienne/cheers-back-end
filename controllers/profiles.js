@@ -1,5 +1,6 @@
 import { Profile } from '../models/profile.js'
 import { v2 as cloudinary } from 'cloudinary'
+import { BoozyTune } from '../models/boozyTune.js'
 
 function index(req, res) {
   Profile.find({})
@@ -29,7 +30,18 @@ function addPhoto(req, res) {
   })
 }
 
+function getRandomSong(req, res) {
+  randomProfile.find({})
+  .then(getRandomSong => res.json(songs))
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
+
 export {
   index,
-  addPhoto
+  addPhoto,
+  getRandomSong
 }

@@ -8,6 +8,7 @@ const router = Router()
 router.get('/', songsCtrl.songSearch)
 
 
+
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 
