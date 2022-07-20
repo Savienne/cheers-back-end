@@ -1,9 +1,13 @@
 import { BoozyTune } from '../models/boozyTune.js'
-
+import { Profile } from '../models/profile.js'
 const create = async (req, res) => {
   try {
     req.body.author = req.user.profile
     const boozyTune = await BoozyTune.create(req.body)
+    await Profile.updateOne(
+      {_id: req.user.profile},
+      {$push: {boozyTunes: boozyTune}}
+    )
     res.status(201).json(boozyTune)
   } catch (err) {
     res.status(500).json(err)
