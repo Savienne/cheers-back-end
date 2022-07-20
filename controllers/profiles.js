@@ -3,6 +3,7 @@ import { v2 as cloudinary } from 'cloudinary'
 
 function index(req, res) {
   Profile.find({})
+  .populate('favoriteDrink')
   .then(profiles => res.json(profiles))
   .catch(err => {
     console.log(err)
@@ -34,9 +35,12 @@ function updateProfile(req, res){
   .then(profile => {
     if (profile._id.equals(req.user.profile)) {
       Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
+      .populate('favoriteDrink')
       .then(updatedProfile => {
         res.json(updatedProfile)
       })
+    } else {
+      res.status(401).json({err: "Not authorized!"})
     }
   })
   .catch(err => {
