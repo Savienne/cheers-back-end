@@ -35,8 +35,25 @@ const deleteOne = async (req, res) => {
 
 }
 
+const update = async (req, res) => {
+  try {
+    const boozyTunes = await BoozyTune.findById(req.params.id)
+    if (boozyTunes.author.equals(req.user.profile)) {
+      boozyTunes.comment = req.body.comment
+      await boozyTunes.save()
+      res.json(boozyTunes)
+    } else {
+      res.status(500).json(err)
+    }
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export {
   create,
   index,
   deleteOne as delete,
+  update
 }
