@@ -14,6 +14,38 @@ function songSearch(req, res) {
 }
 
 
+
+function index(req, res) {
+  console.log(result.strTrack)
+  Track.find({})
+  .populate('result.strTrack')
+  .then(songs => {
+    res.json(song)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({err: err.errmsg})
+  })
+}
+
+function create(req, res) {
+  req.body.owner = req.user.profile
+  Song.create(req.body)
+  .then(song => {
+    Song.findById(song._id)
+    .populate('owner')
+    .then(populatedSong => {
+      res.json(populatedSong)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({err: err.errmsg})
+  })
+}
+
 export {
   songSearch,
+  index,
+  create
 }
