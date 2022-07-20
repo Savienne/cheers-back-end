@@ -5,8 +5,8 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
-router.get('/search', songsCtrl.songSearch)
 router.get('/', songsCtrl.index)
+router.get('/search', songsCtrl.songSearch)
 
 
 /*---------- Protected Routes ----------*/
