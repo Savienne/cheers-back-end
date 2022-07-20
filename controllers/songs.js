@@ -15,11 +15,10 @@ function songSearch(req, res) {
 }
 
 function addSong(req, res) {
-  // Profile.findById(req.user.profile)
-  // .then(profile => {
-  //   Song
-  // })
-  console.log('REQ.BODY', req.body)
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    Song
+  })
 }
 
 export {
