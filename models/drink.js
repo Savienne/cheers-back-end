@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const drinkSchema = new mongoose.Schema({
   name: String,
-  category: String
+  category: String,
 },{
   timestamps: true,
 })

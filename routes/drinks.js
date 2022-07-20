@@ -1,16 +1,17 @@
 import { Router } from 'express'
-import * as songsCtrl from '../controllers/songs.js'
+import * as drinksCtrl from '../controllers/drinks.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
 
 /*---------- Public Routes ----------*/
-router.get('/', songsCtrl.index)
-router.get('/search', songsCtrl.songSearch)
+router.get('/', drinksCtrl.index)
 
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.post('/', checkAuth, songsCtrl.create)
+router.post('/', checkAuth, drinksCtrl.create)
+
+
 
 export { router }
