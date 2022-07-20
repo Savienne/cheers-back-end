@@ -4,6 +4,7 @@ import { v2 as cloudinary } from 'cloudinary'
 function index(req, res) {
   Profile.find({})
   .populate('favoriteDrink')
+  .populate('favoriteSong')
   .then(profiles => res.json(profiles))
   .catch(err => {
     console.log(err)
@@ -36,6 +37,7 @@ function updateProfile(req, res){
     if (profile._id.equals(req.user.profile)) {
       Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
       .populate('favoriteDrink')
+      .populate('favoriteSong')
       .then(updatedProfile => {
         res.json(updatedProfile)
       })
