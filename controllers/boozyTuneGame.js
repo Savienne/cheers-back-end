@@ -1,10 +1,11 @@
-im
+import { Song } from '../models/song.js'
+import { Drink } from "../models/drink.js"
 
-const create = async (req, res) => {
+const createPoll = async (req, res) => {
     try {
       req.body.author = req.user.profile
-      const boozyTune = await BoozyTune.create(req.body)
-      res.status(201).json(boozyTune)
+      const Poll = await Poll.create(req.body)
+      res.status(201).json(songs, drinks)
     } catch (err) {
       res.status(500).json(err)
     }
@@ -12,10 +13,13 @@ const create = async (req, res) => {
   
   const index = async (req, res) => {
     try {
-      const boozyTunes = await BoozyTune.find({})
-      res.status(200).json(boozyTunes)
+      const Poll = await Profile.find({})
+      res.status(200).json(songs, drinks)
     } catch (err) {
       res.status(500).json(err)
     }
   }
-  
+   export {
+    index,
+    createPoll
+   }
