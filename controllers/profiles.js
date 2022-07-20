@@ -30,9 +30,14 @@ function addPhoto(req, res) {
 }
 
 function updateProfile(req, res){
+  console.log(req.params.id)
+  console.log(req.body)
   Profile.findById(req.params.id)
   .then(profile => {
-    if (profile._id.equals(req.user._id)) {
+    console.log(profile._id, "PROFILE ID")
+    console.log(req.user._id, "req.user ID")
+    console.log(req.params.id, "req.params ID")
+    if (profile._id.equals(req.user.profile)) {
       Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
       .then(updatedProfile => {
         res.json(updatedProfile)
