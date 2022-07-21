@@ -11,7 +11,7 @@ const router = Router()
 
 /*----------- PROTECTED ROUTES ------------*/
 router.use(decodeUserFromToken)
-router.post('/', checkAuth, boozyTuneGameCtrl.create)
+router.post('/', checkAuth, boozyTuneGameCtrl.randomSong)
 router.get('/', checkAuth, boozyTuneGameCtrl.index)
 
 

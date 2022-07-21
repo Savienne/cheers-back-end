@@ -1,6 +1,6 @@
 import { BoozyTuneGame } from '../models/boozyTuneGame.js'
 
-const RandomSong = async (req, res) => {
+const randomSong = async (req, res) => {
   try {
     req.body.author = req.user.profile
     const boozyTuneGame = await BoozyTuneGame.create(req.body)
@@ -9,6 +9,16 @@ const RandomSong = async (req, res) => {
     res.status(500).json(err)
   }
 }
+
+const randomDrink = async (req, res) => {
+    try {
+      req.body.author = req.user.profile
+      const boozyTuneGame = await BoozyTuneGame.create(req.body)
+      res.status(201).json(Math.random.Drink)
+    } catch (err) {
+      res.status(500).json(err)
+    }
+  }
 
 const index = async (req, res) => {
   try {
@@ -20,6 +30,7 @@ const index = async (req, res) => {
 }
 
 export{
-    RandomSong,
+    randomSong,
+    randomDrink,
     index
 }
