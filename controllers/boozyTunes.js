@@ -1,5 +1,6 @@
 import { BoozyTune } from '../models/boozyTune.js'
 import { Profile } from '../models/profile.js'
+
 const create = async (req, res) => {
   try {
     req.body.author = req.user.profile
@@ -16,9 +17,13 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const boozyTunes = await BoozyTune.find({})
+    const boozyTunes = await BoozyTune.find({author: req.user.profile})
+    .populate('song')
+    .populate('pairedDrink')
+    console.log('BOOZY TUNE', boozyTunes)
     res.status(200).json(boozyTunes)
   } catch (err) {
+    console.log(err)
     res.status(500).json(err)
   }
 }
