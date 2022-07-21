@@ -17,7 +17,7 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const boozyTunes = await BoozyTune.find({author: req.user.profile})
+    const boozyTunes = await BoozyTune.find({author: req.params.id})
     .populate('song')
     .populate('pairedDrink')
     console.log('BOOZY TUNE', boozyTunes)
