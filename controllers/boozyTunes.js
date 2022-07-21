@@ -17,10 +17,9 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const boozyTunes = await BoozyTune.find({author: req.user.profile})
+    const boozyTunes = await BoozyTune.find({author: req.params.id})
     .populate('song')
     .populate('pairedDrink')
-    console.log('BOOZY TUNE', boozyTunes)
     res.status(200).json(boozyTunes)
   } catch (err) {
     console.log(err)
@@ -49,6 +48,7 @@ const update = async (req, res) => {
     const boozyTunes = await BoozyTune.findById(req.params.id)
     if (boozyTunes.author.equals(req.user.profile)) {
       boozyTunes.comment = req.body.comment
+      boozyTunes.pairedDrink = req.body.pairedDrink
       await boozyTunes.save()
       res.json(boozyTunes)
     } else {
