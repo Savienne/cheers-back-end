@@ -1,36 +1,23 @@
 import { BoozyTuneGame } from '../models/boozyTuneGame.js'
+import { Song } from '../models/song.js'
+import { Drink } from "../models/drink.js"
 
-const randomSong = async (req, res) => {
-  try {
-    req.body.author = req.user.profile
-    const boozyTuneGame = await BoozyTuneGame.create(req.body)
-    res.status(201).json(Math.random.song)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-}
 
-const randomDrink = async (req, res) => {
-    try {
-      req.body.author = req.user.profile
-      const boozyTuneGame = await BoozyTuneGame.create(req.body)
-      res.status(201).json(Math.random.Drink)
+const randomSongAndDrink = async (req, res) => {
+    try{
+        const drinks = await Drink.find({})
+        const songs = await Song.find({})
+        console.log(songs, drinks)
+        const randomDrink = drinks[Math.floor(Math.random() * drinks.length)]
+        const randomSong = songs[Math.floor(Math.random() * songs.length)]
+
+        res.status(201).json({randomDrink, randomSong})
     } catch (err) {
-      res.status(500).json(err)
+        console.log(err)
+        res.status(500).json(err)
     }
-  }
-
-const index = async (req, res) => {
-  try {
-    const boozyTuneGame= await BoozyTuneGame.find({})
-    res.status(200).json(getrandom.song)
-  } catch (err) {
-    res.status(500).json(err)
-  }
 }
 
 export{
-    randomSong,
-    randomDrink,
-    index
+    randomSongAndDrink,
 }
