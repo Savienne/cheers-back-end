@@ -5,6 +5,7 @@ function index(req, res) {
   Profile.find({})
   .populate('favoriteDrink')
   .populate('favoriteSong')
+  .populate('boozyTunes')
   .then(profiles => res.json(profiles))
   .catch(err => {
     console.log(err)
@@ -38,6 +39,7 @@ function updateProfile(req, res){
       Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
       .populate('favoriteDrink')
       .populate('favoriteSong')
+      .populate('boozyTunes')
       .then(updatedProfile => {
         res.json(updatedProfile)
       })
