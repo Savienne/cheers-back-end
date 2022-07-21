@@ -11,8 +11,8 @@ const router = Router()
 
 /*----------- PROTECTED ROUTES ------------*/
 router.use(decodeUserFromToken)
-router.post('/', checkAuth, boozyTunesCtrl.create)
 router.get('/', checkAuth, boozyTunesCtrl.index)
+router.post('/', checkAuth, boozyTunesCtrl.create)
 router.delete('/:id', checkAuth, boozyTunesCtrl.delete)
 router.put('/:id', checkAuth, boozyTunesCtrl.update)
 
